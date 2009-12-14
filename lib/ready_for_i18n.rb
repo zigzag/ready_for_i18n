@@ -1,9 +1,9 @@
 class I18nExtractor
-  ERB_TAG = /<%(.*?)%>/
-  HTML_TAG = /<(.*?)>/
-  SEPERATOR = '_@@@_'
+  SKIP_INLINE_TAG = [/<%(.*?)%>/,/<(.*?)>/,/<%(.*)$/,/^(.*)%>/,/&nbsp;/]
   SKIP_TAGS = [[/<script/i,/<\/script>/i],[/<%/,/%>/],[/<style/i,/\/style>/i]]
- 
+  TEXT_IN_HELPER =  %w{label_tag link_to field_set_tag}.map{|h| /#{h}\s*('|")([\w ]*)(\1)/ }
+  SEPERATOR = '_@@@_'
+
   def initialize(filename)
     @filename = filename
     @stack = []
@@ -12,8 +12,10 @@ class I18nExtractor
  
   def extract
     File.open(@filename).each_with_index do |line,i|
+      text_in_helper = TEXT_IN_HELPER.map{|h| line.match(h).captures[1] if line =~ h}.compact
+      text_in_helper.each { |e| @result << [i+1,e.strip] if e.strip.size > 1  }
       next if in_script_block?(line)
-      text = line.gsub(ERB_TAG, SEPERATOR).gsub(HTML_TAG,SEPERATOR).strip
+      text = SKIP_INLINE_TAG.inject(line){|memo,tag| memo.gsub(tag,SEPERATOR)}.strip
       arr = text.split SEPERATOR
       arr.each { |e| @result << [i+1,e.strip] if e.strip.size > 1  }
     end
@@ -36,5 +38,3 @@ private
   end
  
 end
- 
-

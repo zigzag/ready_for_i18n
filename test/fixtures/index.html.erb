@@ -55,7 +55,6 @@
               <br/><%= f.text_field :login, :size => 30, :maxLength => 40 %>
             <% end %>
           </td>
-
         </tr>
         <tr>
           <td class="left" valign="top">Name:<br/><%= f.text_field :name, :size => 30, :maxLength => 200 %></td>
@@ -78,3 +77,10 @@
     </td>
   </tr>
 </table>
+
+<%= link_to "export",
+ url_for(:controller => 'api/rules', :action => 'index', :language => @profile.language, :profile => @profile.name,
+      :plugins => @plugins.join(','),
+      :status => @status, :searchtext => @searchtext, :priorities => @priorities.join(','), :categories => @categories.join(','),
+      :format => 'csv'),
+ :class => 'action' %>&nbsp;&nbsp;Export
