@@ -26,6 +26,8 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/ready_for_i18n.rb",
+     "ready_for_i18n.gemspec",
+     "test/fixtures/index.html.erb",
      "test/helper.rb",
      "test/test_ready_for_i18n.rb"
   ]
