@@ -5,8 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "ready_for_i18n"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "A handy tool helping transfer your local Rails project to an i18n one."
+    gem.description = <<END_OF_DESC
+      ready_for_i18n will help you extract visible hard-coded text from your views and controllers,
+      then choose a proper key and replace them with the I18n.translate method like t(:LOGIN)
+END_OF_DESC
+    
     gem.email = "zigzag.chen@gmail.com"
     gem.homepage = "http://github.com/zigzag/ready_for_i18n"
     gem.authors = ["zigzag"]
