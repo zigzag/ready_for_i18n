@@ -1,7 +1,6 @@
 = ready_for_i18n
 
-Ready_for_i18n is handy tool help you in the first step of getting your local Rails project ready for I18N.
- (Based on t method since rails 2.2).
+Ready_for_i18n is handy tool helping you in the first step of getting your local Rails project ready for I18N.
 
 It will automatically extract hard-coded text from your ERB view file,
 then choose a proper key and replace them with the I18n.translate method.
@@ -23,8 +22,8 @@ Your erb files in source path will be transformed(i18n_ready)
 and copy to target file path,together with a locale file 'en.yml'.
 
 Using the following options:
-        --locale [LOCALE]            Generating for the specified locale (default locale 'en')
-        --ext [EXTENSION]            The file extension name of your views(default '.html.erb')
+  --locale [LOCALE]            Generating for the specified locale (default locale 'en')
+  --ext [EXTENSION]            The file extension name of your views(default '.html.erb')
 
 == Note on Patches/Pull Requests
  
