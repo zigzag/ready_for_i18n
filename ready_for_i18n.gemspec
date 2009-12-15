@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ready_for_i18n}
-  s.version = "0.2.2"
+  s.version = "0.2.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["zigzag"]
@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/ready_for_i18n",
      "lib/base_extractor.rb",
-     "lib/i18n_automator.rb",
      "lib/label_extractor.rb",
      "lib/locale_dictionary.rb",
      "lib/ready_for_i18n.rb",
