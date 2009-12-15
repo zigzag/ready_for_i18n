@@ -5,7 +5,7 @@ class TestLabelExtractor < Test::Unit::TestCase
     f = File.join(File.dirname(__FILE__),'fixtures','index.html.erb')
     result = []
     ReadyForI18N::LabelExtractor.new(f).extract{|k,v| result << v}
-    expected = %w{edit delete select export cancel}
+    expected = %w{edit delete select export cancel} << "Add Event"
     assert_same_elements(expected,result)
   end
   
@@ -13,7 +13,8 @@ class TestLabelExtractor < Test::Unit::TestCase
     source = File.join(File.dirname(__FILE__),'fixtures','index.html.erb')
     target = File.join(File.dirname(__FILE__),'output','label.html.erb')
     ReadyForI18N::LabelExtractor.new(source,target).extract
-    %w{edit delete select export cancel}.each do |e|
+    expected = %w{edit delete select export cancel add_event}
+    expected.each do |e|
       assert(File.read(target).include?("t(:label_#{e})"), "should found t method with symbol")
     end
   end
