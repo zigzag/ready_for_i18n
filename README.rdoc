@@ -7,11 +7,14 @@ It will automatically extract hard-coded text from your ERB view file,
 then choose a proper key and replace them with the I18n.translate method.
 
 Currently two extractors are available
+
 # TextExtractor will scan all text node in you HTML document, extract them and replace with <%=t :key%>
+
 # LabelExtractor will scan all the text related helper methods like link_to('Login'...) and replace with t(:login)
 
+
 == Basic Command Line Usage:
-  <pre>ready_for_i18n <path to ERB source files> <target path> </pre>
+  ready_for_i18n <path to ERB source files> <target path> 
 
 Your erb files in source path will be transformed(i18n_ready)
 and copy to target file path,together with a locale file 'en.yml'.
