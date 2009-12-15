@@ -84,3 +84,6 @@
       :status => @status, :searchtext => @searchtext, :priorities => @priorities.join(','), :categories => @categories.join(','),
       :format => 'csv'),
  :class => 'action' %>&nbsp;&nbsp;<%=t(:text_export)%>
+
+<%= link_to_remote 'Add Event', {:url => { :controller => 'events', :action => "new", :rid => params['rid'] },
+     :update => "event_form"}, {:class => 'action'} %>

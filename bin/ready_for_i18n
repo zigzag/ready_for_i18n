@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+ 
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+ 
+help = <<HELP
+******************************************************************************
+ready_for_i18n is a handy tool in the first step of transfering your local 
+Rails project to an i18n one.
+
+It will automatically extract hard-coded text from your ERB view file,
+then choose a proper key and replace them with the I18n.translate method.
+ 
+Basic Command Line Usage:
+  ready_for_i18n <path to ERB source files> <target path>
+
+# Your erb files in source path will be transformed(i18n_ready)
+# and copy to target file path,together with a locale file 'en.yml'.
+
+# using the following options:
+ 
+HELP
+ 
+require 'optparse'
+require 'fileutils'
+require 'ready_for_i18n'
+ 
+options = {}
+opts = OptionParser.new do |opts|
+  opts.banner = help
+  opts.on("--locale [LOCALE]", "Generating for the specified locale (default locale 'en')") do |locale|
+    options['locale'] = locale unless locale.nil?
+  end
+
+  opts.on("--ext [EXTENSION]", "The file extension name of your views(default '.html.erb')") do |extension|
+    options['extension'] = extension unless extension.nil?
+  end
+
+end
+ 
+# Read command line options into `options` hash
+opts.parse!
+ 
+# Get source and destintation from command line
+case ARGV.size
+  when 2
+    options['source']      = ARGV[0]
+    options['destination'] = ARGV[1]
+  else
+    puts "Invalid options. Run `ready_for_i18n --help` for assistance."
+    exit(1)
+end
+ 
+def excute(src_path,target_path,locale,extension)
+  ext = extension || '.html.erb'
+  dict = ReadyForI18N::LocaleDictionary.new(locale)
+  Dir.glob(File.join(src_path,"**/*#{ext}")).each do |f|
+    full_target_path = File.dirname(f).gsub(src_path,target_path)
+    FileUtils.makedirs full_target_path
+    target_file = File.join(full_target_path,File.basename(f))
+    ReadyForI18N::LabelExtractor.new(f,target_file).extract{|k,v| dict[k] = v}
+    ReadyForI18N::TextExtractor.new(target_file,target_file).extract{|k,v| dict[k] = v}
+    puts "i18n ready: #{target_file}"
+  end
+  locale_file = dict.write_to target_path
+  puts "------------------------------------------------------------------------------"
+  puts "Locale file: #{locale_file}"
+end
+
+# Run the i18n generating
+excute(options['source'],options['destination'],options['locale'],options['extension'])

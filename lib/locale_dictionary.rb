@@ -14,6 +14,7 @@ module ReadyForI18N
         f.puts "#{@locale}:"
         @hash.keys.sort{|a,b|a.to_s<=>b.to_s}.each { |k| f.puts "  #{k}: \"#{@hash[k]}\"" }
       end
+      file
     end
     
   end
