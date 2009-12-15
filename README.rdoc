@@ -6,11 +6,10 @@ Rails project to an i18n one.
 It will automatically extract hard-coded text from your ERB view file,
 then choose a proper key and replace them with the I18n.translate method.
 
-Currently two extractors are available
+Currently two extractors are available:
 
-# TextExtractor will scan all text node in you HTML document, extract them and replace with <%=t :key%>
-
-# LabelExtractor will scan all the text related helper methods like link_to('Login'...) and replace with t(:login)
+# TextExtractor will scan all text node in you HTML document, like <b>Hello</b> and extract them and replace with <%=t(:text_hello)%>
+# LabelExtractor will scan all the text in helper methods like link_to('Login'...) and replace with link_to (t(:login))
 
 
 == Basic Command Line Usage:
