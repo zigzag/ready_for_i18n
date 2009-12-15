@@ -5,15 +5,17 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ready_for_i18n}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["zigzag"]
   s.date = %q{2009-12-15}
-  s.description = %q{      ready_for_i18n will help you extract visible hard-coded text from your views and controllers,
-      then choose a proper key and replace them with the I18n.translate method like t(:LOGIN)
+  s.default_executable = %q{ready_for_i18n}
+  s.description = %q{      ready_for_i18n will help you extract visible hard-coded text from your ERB view files,
+      then choose a proper key and replace them with the I18n.translate method like t(:login)
 }
   s.email = %q{zigzag.chen@gmail.com}
+  s.executables = ["ready_for_i18n"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -25,6 +27,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "bin/ready_for_i18n",
      "lib/base_extractor.rb",
      "lib/i18n_automator.rb",
      "lib/label_extractor.rb",
@@ -46,7 +49,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{A handy tool helping transfer your local Rails project to an i18n one.}
+  s.summary = %q{ready_for_i18n is a tool helping for the very first step of transfering your local Rails project to an i18n one.}
   s.test_files = [
     "test/helper.rb",
      "test/test_base_extractor.rb",
