@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ready_for_i18n}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["zigzag"]
-  s.date = %q{2009-12-14}
+  s.date = %q{2009-12-15}
   s.description = %q{      ready_for_i18n will help you extract visible hard-coded text from your views and controllers,
       then choose a proper key and replace them with the I18n.translate method like t(:LOGIN)
 }
@@ -25,11 +25,22 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "lib/base_extractor.rb",
+     "lib/i18n_automator.rb",
+     "lib/label_extractor.rb",
+     "lib/locale_dictionary.rb",
      "lib/ready_for_i18n.rb",
+     "lib/text_extractor.rb",
      "ready_for_i18n.gemspec",
      "test/fixtures/index.html.erb",
      "test/helper.rb",
-     "test/test_ready_for_i18n.rb"
+     "test/output/en.yml",
+     "test/output/label.html.erb",
+     "test/output/text.html.erb",
+     "test/test_base_extractor.rb",
+     "test/test_label_extractor.rb",
+     "test/test_locale_dictionary.rb",
+     "test/test_text_extrator.rb"
   ]
   s.homepage = %q{http://github.com/zigzag/ready_for_i18n}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -38,7 +49,10 @@ Gem::Specification.new do |s|
   s.summary = %q{A handy tool helping transfer your local Rails project to an i18n one.}
   s.test_files = [
     "test/helper.rb",
-     "test/test_ready_for_i18n.rb"
+     "test/test_base_extractor.rb",
+     "test/test_label_extractor.rb",
+     "test/test_locale_dictionary.rb",
+     "test/test_text_extrator.rb"
   ]
 
   if s.respond_to? :specification_version then
