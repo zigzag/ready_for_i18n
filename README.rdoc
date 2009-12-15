@@ -1,15 +1,20 @@
 = ready_for_i18n
 
-ready_for_i18n is a handy tool in the first step of transfering your local 
-Rails project to an i18n one.
+Ready_for_i18n is handy tool help you in the first step of getting your local Rails project ready for I18N.
+ (Based on t method since rails 2.2).
 
 It will automatically extract hard-coded text from your ERB view file,
 then choose a proper key and replace them with the I18n.translate method.
 
 Currently two extractors are available:
 
-* TextExtractor will scan all text nodes in you HTML document, like &lt;b&gt;Hello&lt;/b&gt; then replace it with <%=t(:text_hello)%>.
-* LabelExtractor will scan all the text in helper methods like link_to('Login'...) and replace with link_to (t(:login)).
+  * TextExtractor will scan all HTML text nodes in you view files, like <b>Hello</b> then replace it with <%=t(:text_hello)%>.
+  * LabelExtractor will scan all the text in helper methods like link_to('Login'...) and replace with link_to (t(:login)).
+
+== Installation:
+  gem install ready_for_i18n
+
+Hosed at http://www.gemcutter.org/gems/ready_for_i18n
 
 == Basic Command Line Usage:
   ready_for_i18n <path to ERB source files> <target path> 
