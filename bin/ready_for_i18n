@@ -53,7 +53,7 @@ end
 def excute(src_path,target_path,locale,extension)
   ext = extension || '.html.erb'
   dict = ReadyForI18N::LocaleDictionary.new(locale)
-  Dir.glob(File.join(src_path,"**/*#{ext}")).each do |f|
+  Dir.glob(File.join(src_path,"**#{File::SEPARATOR}*#{ext}")).each do |f|
     full_target_path = File.dirname(f).gsub(src_path,target_path)
     FileUtils.makedirs full_target_path
     target_file = File.join(full_target_path,File.basename(f))
