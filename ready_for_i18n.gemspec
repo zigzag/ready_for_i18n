@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ready_for_i18n}
-  s.version = "0.2.3"
+  s.version = "0.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["zigzag"]
-  s.date = %q{2009-12-15}
+  s.date = %q{2009-12-16}
   s.default_executable = %q{ready_for_i18n}
   s.description = %q{      ready_for_i18n will help you extract visible hard-coded text from your ERB view files,
       then choose a proper key and replace them with the I18n.translate method like t(:login)
