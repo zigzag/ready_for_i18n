@@ -10,6 +10,8 @@ Currently two extractors are available:
   * TextExtractor will scan all HTML text nodes in you view files, like <b>Hello</b> then replace it with <%=t(:text_hello)%>.
   * LabelExtractor will scan all the text in helper methods like link_to('Login'...) and replace with link_to (t(:login)).
 
+Introduction Blog at: http://zigzag.github.com/2009/12/17/get-your-local-rails-application-ready-for-i18n.html
+
 == Installation:
   gem install ready_for_i18n
 
