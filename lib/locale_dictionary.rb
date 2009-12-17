@@ -12,7 +12,7 @@ module ReadyForI18N
       file = File.join(path,"#{@locale}.yml")
       File.open(file,'w+') do |f|
         f.puts "#{@locale}:"
-        @hash.keys.sort{|a,b|a.to_s<=>b.to_s}.each { |k| f.puts "  #{k}: \"#{@hash[k]}\"" }
+        @hash.keys.sort{|a,b|a.to_s<=>b.to_s}.each { |k| f.puts "  #{k}: #{@hash[k].dump}" }
       end
       file
     end

@@ -7,10 +7,12 @@ class TestLocaleDictionary < Test::Unit::TestCase
     dict['login_key'] = 'Login:'
     dict['label'] = 'OK'
     dict['text'] = 'Please Confirm:'
+    dict['with_quote'] = 'It is my "Label"'
     dict.write_to target_path
     
     result = YAML.load_file File.join(target_path,'en.yml')
     assert_equal('Login:', result['en']['login_key'])
+    assert_equal("It is my \"Label\"", result['en']['with_quote'])
   end
   
 end
