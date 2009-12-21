@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ready_for_i18n}
-  s.version = "0.2.6"
+  s.version = "0.2.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["zigzag"]
-  s.date = %q{2009-12-17}
+  s.date = %q{2009-12-21}
   s.default_executable = %q{ready_for_i18n}
   s.description = %q{      ready_for_i18n will help you extract visible hard-coded text from your ERB view files,
       then choose a proper key and replace them with the I18n.translate method like t(:login)
@@ -29,20 +29,24 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/ready_for_i18n",
      "lib/base_extractor.rb",
-     "lib/label_extractor.rb",
+     "lib/erb_helper_extractor.rb",
+     "lib/html_attr_extractor.rb",
+     "lib/html_text_extractor.rb",
+     "lib/i18n_generator.rb",
      "lib/locale_dictionary.rb",
      "lib/ready_for_i18n.rb",
-     "lib/text_extractor.rb",
      "ready_for_i18n.gemspec",
+     "test/fixtures/html_attr.html.erb",
      "test/fixtures/index.html.erb",
      "test/helper.rb",
      "test/output/en.yml",
      "test/output/label.html.erb",
      "test/output/text.html.erb",
      "test/test_base_extractor.rb",
-     "test/test_label_extractor.rb",
-     "test/test_locale_dictionary.rb",
-     "test/test_text_extrator.rb"
+     "test/test_erb_helper_extractor.rb",
+     "test/test_html_attr_extractor.rb",
+     "test/test_html_text_extractor.rb",
+     "test/test_locale_dictionary.rb"
   ]
   s.homepage = %q{http://github.com/zigzag/ready_for_i18n}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -52,9 +56,10 @@ Gem::Specification.new do |s|
   s.test_files = [
     "test/helper.rb",
      "test/test_base_extractor.rb",
-     "test/test_label_extractor.rb",
-     "test/test_locale_dictionary.rb",
-     "test/test_text_extrator.rb"
+     "test/test_erb_helper_extractor.rb",
+     "test/test_html_attr_extractor.rb",
+     "test/test_html_text_extractor.rb",
+     "test/test_locale_dictionary.rb"
   ]
 
   if s.respond_to? :specification_version then
