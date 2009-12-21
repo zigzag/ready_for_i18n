@@ -1,5 +1,5 @@
 require 'base_extractor'
-require 'text_extractor'
-require 'label_extractor'
+require 'html_text_extractor'
+require 'erb_helper_extractor'
 require 'locale_dictionary'
 require 'i18n_generator'
