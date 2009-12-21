@@ -5,9 +5,10 @@ Ready_for_i18n is handy tool helping you in the first step of getting your local
 It will automatically extract hard-coded text from your ERB view file,
 then choose a proper key and replace them with the I18n.translate method.
 
-Currently two extractors are available:
+Currently three extractors are available:
 
-  * HtmlTextExtractor will scan all HTML text nodes in you view files, like <b>Hello</b> then replace it with <%=t(:text_hello)%>.
+  * HtmlTextExtractor will scan all HTML text nodes in you view files, like <b>Hello</b> then replace it with <b><%=t(:text_hello)%></b>.
+  * HtmlAttrExtractor will scan all visible HTML attribute in you view files, like <input type="submit" value="Back"> then replace it with <input type="submit" value="<%=t(:label_back)">.
   * ErbHelperExtractor will scan all the text in helper methods like link_to('Login'...) and replace with link_to (t(:login)).
 
 Introduction Blog at: http://zigzag.github.com/2009/12/17/get-your-local-rails-application-ready-for-i18n.html
@@ -18,11 +19,14 @@ Introduction Blog at: http://zigzag.github.com/2009/12/17/get-your-local-rails-a
 Hosed at http://www.gemcutter.org/gems/ready_for_i18n
 
 == Basic Command Line Usage:
-  ready_for_i18n <path to ERB source files> <target path> 
+  ready_for_i18n <path to ERB source files> [target path]
 
-Your erb files in source path will be transformed(i18n_ready)
-and copy to target file path,together with a locale file 'en.yml'.
+Your erb files in source path will be transformed(i18n_ready) and copy to target file path.
+If target path is missing, then ready_for_i18n will do a Dry run and only generated the locale file.
 
+A locale file will be output to STDOUT,which you can redirect to file like
+  ready_for_i18n <path to ERB source files> [target path] > /temp/en.yml
+  
 Using the following options:
   --locale [LOCALE]            Generating for the specified locale (default locale 'en')
   --ext [EXTENSION]            The file extension name of your views(default '.html.erb')
