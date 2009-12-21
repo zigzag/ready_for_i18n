@@ -50,18 +50,5 @@ case ARGV.size
     exit(1)
 end
  
-def excute(src_path,target_path,locale,extension)
-  ext = extension || '.html.erb'
-  dict = ReadyForI18N::LocaleDictionary.new(locale)
-  Dir.glob(File.join(src_path,"**#{File::SEPARATOR}*#{ext}")).each do |f|
-    full_target_path = File.dirname(f).gsub(src_path,target_path)
-    FileUtils.makedirs full_target_path
-    target_file = File.join(full_target_path,File.basename(f))
-    ReadyForI18N::LabelExtractor.new(f,target_file).extract{|k,v| dict[k] = v}
-    ReadyForI18N::TextExtractor.new(target_file,target_file).extract{|k,v| dict[k] = v}
-  end
-  dict.write_to STDOUT
-end
-
 # Run the i18n generating
-excute(options['source'],options['destination'],options['locale'],options['extension'])
+ReadyForI18N::I18nGenerator.excute(options)
