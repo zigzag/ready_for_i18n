@@ -59,11 +59,8 @@ def excute(src_path,target_path,locale,extension)
     target_file = File.join(full_target_path,File.basename(f))
     ReadyForI18N::LabelExtractor.new(f,target_file).extract{|k,v| dict[k] = v}
     ReadyForI18N::TextExtractor.new(target_file,target_file).extract{|k,v| dict[k] = v}
-    puts "i18n ready: #{target_file}"
   end
-  locale_file = dict.write_to target_path
-  puts "------------------------------------------------------------------------------"
-  puts "Locale file: #{locale_file}"
+  dict.write_to STDOUT
 end
 
 # Run the i18n generating

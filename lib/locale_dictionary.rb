@@ -7,15 +7,9 @@ module ReadyForI18N
     def []=(key,value)
       @hash[key] = value
     end
-
-    def write_to(path)
-      file = File.join(path,"#{@locale}.yml")
-      File.open(file,'w+') do |f|
-        f.puts "#{@locale}:"
-        @hash.keys.sort{|a,b|a.to_s<=>b.to_s}.each { |k| f.puts "  #{k}: #{@hash[k].dump}" }
-      end
-      file
+    def write_to(out)
+      out.puts "#{@locale}:"
+      @hash.keys.sort{|a,b|a.to_s<=>b.to_s}.each { |k| out.puts "  #{k}: #{@hash[k].dump}" }
     end
-    
   end
 end
