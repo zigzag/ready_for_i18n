@@ -1,14 +1,11 @@
+require 'stringio'
+
 module ReadyForI18N
   module BaseExtractor
     VALUE_PATTERN = /\w+/
-    def initialize(erb_source, erb_target = nil)
-      @erb_source = erb_source
-      @erb_target = erb_target
-    end
-
-    def extract
-      buffer = ''
-      File.open(@erb_source).each do |line|
+    def extract(input)
+      buffer = StringIO.new
+      input.each do |line|
         unless skip_line?(line)
           values_in_line(line).each do |e|
             if can_replace?(e)
@@ -19,7 +16,7 @@ module ReadyForI18N
         end
         buffer << line
       end
-      File.open(@erb_target,'w+') {|f| f << buffer} if @erb_target
+      buffer.string
     end
     def to_key(s)
       result = to_value(s).scan(/\w+/).join('_').downcase

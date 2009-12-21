@@ -5,16 +5,15 @@ class TestTextExtractor < Test::Unit::TestCase
     f = File.join(File.dirname(__FILE__),'fixtures','index.html.erb')
     expected = %w{Users Login Name Groups Operations Login: Name: Password: Export} << 'Confirm password:'
     result = []
-    ReadyForI18N::TextExtractor.new(f).extract{|k,v| result << v}
+    ReadyForI18N::TextExtractor.new.extract(File.read(f)){|k,v| result << v}
     assert_same_elements(expected,result)
   end
   
   should "replace the text in helper with t method" do
     source = File.join(File.dirname(__FILE__),'fixtures','index.html.erb')
-    target = File.join(File.dirname(__FILE__),'output','text.html.erb')
-    ReadyForI18N::TextExtractor.new(source,target).extract
+    output = ReadyForI18N::TextExtractor.new.extract(File.read(source))
     %w{Users Login Name Groups Operations Login: Name: Password: Export}.each do |e|
-      assert(File.read(target).include?("<%=t(:text_#{e.downcase.gsub(':','')})%>"), "should found t method with symbol")
+      assert(output.include?("<%=t(:text_#{e.downcase.gsub(':','')})%>"), "should found t method with symbol")
     end
   end
   
