@@ -1,0 +1,7 @@
+<img src="<%= ApplicationController.root_context -%>/images/print.gif" alt="Print" />
+<IMG src="<%= ApplicationController.root_context -%>/images/priority/<%= rule_measure.rule_priority -%>.gif" title="Measure"></IMG>
+<input id="saveBtn"    value="Save" onclick="SelectBox.select_all('to');submit();return false;" type="submit">
+<input type="submit" value="Compare on chart" />
+<input type="button" name="button_copy" id="copy_<%= u profile.key %>" value="copy" onClick='var name=prompt("Name for the new profile"); if (name!=null) {$("copy_<%= profile.id %>").value=name; submit();} else {return false;}'>
+<input type="hidden" value="Should not extract">
+<input type="text" value="<%= should ignore me %>">

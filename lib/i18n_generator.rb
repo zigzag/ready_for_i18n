@@ -1,6 +1,6 @@
 module ReadyForI18N
   class I18nGenerator
-    EXTRACTORS = [ErbHelperExtractor,HtmlTextExtractor]
+    EXTRACTORS = [ErbHelperExtractor,HtmlTextExtractor,HtmlAttrExtractor]
     def self.excute(opt)
       @src_path = opt['source']
       @target_path = opt['destination']
