@@ -7,9 +7,6 @@ then choose a proper key and replace them with the I18n.translate method.
 
 Currently three extractors are available:
 
-|Extractor|From|to|
-|1|2|3|
-
   * HtmlTextExtractor will scan all HTML text nodes in you view files, like <b>Hello</b> then replace it with <b><%=t(:text_hello)%></b>.
   * HtmlAttrExtractor will scan all visible HTML attribute in you view files, like <input type="submit" value="Back"> then replace it with <input type="submit" value="<%=t(:label_back)">.
   * ErbHelperExtractor will scan all the text in helper methods like link_to('Login'...) and replace with link_to (t(:login)).
