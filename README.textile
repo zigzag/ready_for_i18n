@@ -7,7 +7,7 @@ then choose a proper key and replace them with the I18n.translate method.
 
 Currently three extractors are available:
 
-||Extractor||From||To||
+|Extractor|From|To|
 |HtmlTextExtractor|@<b>Hello</b>@|@<b><%=t(:text_hello)%></b>@|
 |HtmlAttrExtractor|@<input type="submit" value="Back"/>@|@<input type="submit" value="<%=t(:label_back)"/>@|
 |ErbHelperExtractor|@link_to('Login'...)@|@link_to (t(:login))@|
