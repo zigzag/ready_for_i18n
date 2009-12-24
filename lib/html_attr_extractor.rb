@@ -22,5 +22,8 @@ module ReadyForI18N
     def key_prefix
       'label'
     end
+    def replace_line(line,e)
+      line.sub!(e,"<%=t(:#{to_key(e)})%>")
+    end
   end
 end

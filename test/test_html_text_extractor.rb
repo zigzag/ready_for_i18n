@@ -17,4 +17,13 @@ class TestHtmlTextExtractor < Test::Unit::TestCase
     end
   end
   
+  should "replace the text only needed" do
+    input = "<span id='Replace Me'>Replace Me</span>"
+    output = ReadyForI18N::HtmlTextExtractor.new.extract input
+    assert_equal("<span id='Replace Me'><%=t(:text_replace_me)%></span>", output)
+
+    input = "<span id='Replace Me'>Replace Me"
+    output = ReadyForI18N::HtmlTextExtractor.new.extract input
+    assert_equal("<span id='Replace Me'><%=t(:text_replace_me)%>", output)
+  end
 end

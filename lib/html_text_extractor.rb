@@ -28,7 +28,13 @@ module ReadyForI18N
       s.strip
     end
     def replace_line(line,e)
-      line.gsub!(e,"<%=t(:#{to_key(e)})%>")
+      repeat = line.scan(e).size
+      return line if repeat == 0
+      return line.sub!(e,"<%=t(:#{to_key(e)})%>") if repeat == 1
+      if repeat > 1
+        line.gsub!(/>\s*#{e}\s*</,"><%=t(:#{to_key(e)})%><")
+        line.gsub!(/>\s*#{e}/,"><%=t(:#{to_key(e)})%>")
+      end
     end
     def key_prefix
       'text'
