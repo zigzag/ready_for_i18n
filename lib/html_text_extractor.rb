@@ -1,7 +1,7 @@
 module ReadyForI18N
   class HtmlTextExtractor
     SKIP_TAGS = [[/<script/i,/<\/script>/i],[/<%/,/%>/],[/<style/i,/\/style>/i]]
-    SKIP_INLINE_TAG = [/<%(.*?)%>/,/<(.*?)>/,/<%(.*)$/,/^(.*)%>/,/&nbsp;/,/&raquo;/]
+    SKIP_INLINE_TAG = [/<%(.*?)%>/,/<(.*?)>/,/<(.*)$/,/^(.*)>/,/&nbsp;/]
     SEPERATOR = '_@@@_'
 
     include ReadyForI18N::BaseExtractor

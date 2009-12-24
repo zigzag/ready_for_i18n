@@ -1,3 +1,6 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <table width="100%">
   <tr>
     <td valign="top">
@@ -77,6 +80,8 @@
     </td>
   </tr>
 </table>
+
+<button id="select_right_all" onclick="SelectBox.move_all('from', 'to');return false;">select all &raquo;</button><br><br>
 
 <%= link_to "export",
  url_for(:controller => 'api/rules', :action => 'index', :language => @profile.language, :profile => @profile.name,
