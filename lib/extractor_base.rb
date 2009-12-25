@@ -9,7 +9,6 @@ module ReadyForI18N
     def self.use_dot?
       @use_dot
     end
-    attr_accessor :use_dot
     def extract(input)
       buffer = StringIO.new
       input.each do |line|
