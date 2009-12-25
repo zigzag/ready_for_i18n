@@ -2,7 +2,7 @@ module ReadyForI18N
   class ErbHelperExtractor
     LABEL_IN_HELPER_PATTERN =  %w{label_tag link_to field_set_tag submit_tag button_to}.map{|h| /#{h}[\s\w_]*('|")([\w ]*)(\1)/ }
 
-    include ReadyForI18N::BaseExtractor
+    include ReadyForI18N::ExtractorBase
     
     protected 
     def values_in_line(line)
@@ -15,7 +15,7 @@ module ReadyForI18N
       s.strip[1..-2]
     end
     def replace_line(line,e)
-      line.gsub!(e,"t(:#{to_key(e)})")
+      line.gsub!(e,t_method(e))
     end
     def key_prefix
       'label'

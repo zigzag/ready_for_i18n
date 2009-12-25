@@ -11,11 +11,13 @@ It will automatically extract hard-coded text from your ERB view file,
 then choose a proper key and replace them with the I18n.translate method.
  
 Basic Command Line Usage:
-  ready_for_i18n <path to ERB source files> <target path>
+  ready_for_i18n <path_to_ERB_source_files> [target path]
 
-# Your erb files in source path will be transformed(i18n_ready)
-# and copy to target file path,together with a locale file 'en.yml'.
-
+#  Your erb files in source path will be transformed(i18n_ready) and copy to target file path.
+#  If the target path is missing, then ready_for_i18n will do a Dry run and only generate the locale file.
+#  A locale file will be output to STDOUT, which you can redirect to file like
+#  ready_for_i18n <path_to_ERB_source_files> [target path] > /temp/en.yml
+  
 # using the following options:
  
 HELP
@@ -33,6 +35,10 @@ opts = OptionParser.new do |opts|
 
   opts.on("--ext [EXTENSION]", "The file extension name of your views(default '.html.erb')") do |extension|
     options['extension'] = extension unless extension.nil?
+  end
+  
+  opts.on("--dot","Generate a structured dictionary file and support `Lazy` Lookup of Rails > 2.3 ") do |dot|
+    options['dot'] = true
   end
 
 end

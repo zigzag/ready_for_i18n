@@ -18,6 +18,7 @@ class TestErbHelperExtractor < Test::Unit::TestCase
     expected = %w{edit delete select export cancel add_event}
     expected.each do |e|
       assert(File.read(target).include?("t(:label_#{e})"), "should found t method with symbol")
+      assert(!File.read(target).include?("<%=t(:label_#{e})%>"), "should Not found t method wrapped.")
     end
   end
   

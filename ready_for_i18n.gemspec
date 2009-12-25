@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "bin/ready_for_i18n",
-     "lib/base_extractor.rb",
+     "lib/extractor_base.rb",
      "lib/erb_helper_extractor.rb",
      "lib/html_attr_extractor.rb",
      "lib/html_text_extractor.rb",
@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
      "test/output/en.yml",
      "test/output/label.html.erb",
      "test/output/text.html.erb",
-     "test/test_base_extractor.rb",
+     "test/test_extractor_base.rb",
      "test/test_erb_helper_extractor.rb",
      "test/test_html_attr_extractor.rb",
      "test/test_html_text_extractor.rb",
@@ -55,7 +55,7 @@ Gem::Specification.new do |s|
   s.summary = %q{ready_for_i18n is a tool helping for the very first step of transfering your local Rails project to an i18n one.}
   s.test_files = [
     "test/helper.rb",
-     "test/test_base_extractor.rb",
+     "test/test_extractor_base.rb",
      "test/test_erb_helper_extractor.rb",
      "test/test_html_attr_extractor.rb",
      "test/test_html_text_extractor.rb",

@@ -1,14 +1,15 @@
 require 'helper'
+require 'stringio'
 
 class TestLocaleDictionary < Test::Unit::TestCase
   should "save the result hash to yaml file" do
     locale_file = File.join(File.dirname(__FILE__),'output','en.yml')
     
     dict = ReadyForI18N::LocaleDictionary.new
-    dict['login_key'] = 'Login:'
-    dict['label'] = 'OK'
-    dict['text'] = 'Please Confirm:'
-    dict['with_quote'] = 'It is my "Label"'
+    dict.push 'login_key','Login:'
+    dict.push 'label','OK'
+    dict.push 'text','Please Confirm:'
+    dict.push 'with_quote','It is my "Label"'
     File.open(locale_file,'w+') {|f| dict.write_to f}
     
     result = YAML.load_file locale_file
@@ -18,8 +19,18 @@ class TestLocaleDictionary < Test::Unit::TestCase
   
   should "output to STDOUT when write to is nil" do
     dict = ReadyForI18N::LocaleDictionary.new
-    dict['label'] = 'OK'
-    dict.write_to STDOUT
+    dict.push 'label','OK'
+    out = StringIO.new
+    dict.write_to out
+    assert_equal("en:\n  label: \"OK\"\n", out.string)
+  end
+  
+  should "should intent output when path is given" do 
+    dict = ReadyForI18N::LocaleDictionary.new
+    dict.push 'label','OK',['my_view']
+    out = StringIO.new
+    dict.write_to out
+    assert_equal("en:\n  my_view:\n    label: \"OK\"\n", out.string)
   end
   
 end

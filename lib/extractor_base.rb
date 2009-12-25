@@ -1,8 +1,15 @@
 require 'stringio'
 
 module ReadyForI18N
-  module BaseExtractor
+  module ExtractorBase
     VALUE_PATTERN = /\w+/
+    def self.use_dot(on_off)
+      @use_dot = on_off
+    end
+    def self.use_dot?
+      @use_dot
+    end
+    attr_accessor :use_dot
     def extract(input)
       buffer = StringIO.new
       input.each do |line|
@@ -24,6 +31,10 @@ module ReadyForI18N
     end
     def can_replace?(e)
       e.scan(VALUE_PATTERN).length > 0
+    end
+    def t_method(val,wrap=false)
+      m = ExtractorBase.use_dot? ? "t('.#{to_key(val)}')" : "t(:#{to_key(val)})"
+      wrap ? "<%=#{m}%>" : m
     end
   end
 end

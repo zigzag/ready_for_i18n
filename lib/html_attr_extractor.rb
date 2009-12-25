@@ -23,7 +23,7 @@ module ReadyForI18N
       'label'
     end
     def replace_line(line,e)
-      line.sub!(e,"<%=t(:#{to_key(e)})%>")
+      line.sub!(e,t_method(e,true))
     end
   end
 end

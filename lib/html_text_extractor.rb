@@ -4,7 +4,7 @@ module ReadyForI18N
     SKIP_INLINE_TAG = [/<%(.*?)%>/,/<(.*?)>/,/<(.*)$/,/^(.*)>/,/&nbsp;/]
     SEPERATOR = '_@@@_'
 
-    include ReadyForI18N::BaseExtractor
+    include ReadyForI18N::ExtractorBase
     
     protected 
     def values_in_line(line)
@@ -29,11 +29,12 @@ module ReadyForI18N
     end
     def replace_line(line,e)
       repeat = line.scan(e).size
+      replaced = t_method(e,true)
       return line if repeat == 0
-      return line.sub!(e,"<%=t(:#{to_key(e)})%>") if repeat == 1
+      return line.sub!(e,replaced) if repeat == 1
       if repeat > 1
-        line.gsub!(/>\s*#{e}\s*</,"><%=t(:#{to_key(e)})%><")
-        line.gsub!(/>\s*#{e}/,"><%=t(:#{to_key(e)})%>")
+        line.gsub!(/>\s*#{e}\s*</,">#{replaced}<")
+        line.gsub!(/>\s*#{e}/,">#{replaced}")
       end
     end
     def key_prefix
