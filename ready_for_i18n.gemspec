@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ready_for_i18n}
-  s.version = "0.2.7"
+  s.version = "0.2.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["zigzag"]
-  s.date = %q{2009-12-21}
+  s.date = %q{2009-12-25}
   s.default_executable = %q{ready_for_i18n}
   s.description = %q{      ready_for_i18n will help you extract visible hard-coded text from your ERB view files,
       then choose a proper key and replace them with the I18n.translate method like t(:login)
@@ -18,18 +18,18 @@ Gem::Specification.new do |s|
   s.executables = ["ready_for_i18n"]
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.rdoc"
+     "README.textile"
   ]
   s.files = [
     ".document",
      ".gitignore",
      "LICENSE",
-     "README.rdoc",
+     "README.textile",
      "Rakefile",
      "VERSION",
      "bin/ready_for_i18n",
-     "lib/extractor_base.rb",
      "lib/erb_helper_extractor.rb",
+     "lib/extractor_base.rb",
      "lib/html_attr_extractor.rb",
      "lib/html_text_extractor.rb",
      "lib/i18n_generator.rb",
@@ -42,8 +42,8 @@ Gem::Specification.new do |s|
      "test/output/en.yml",
      "test/output/label.html.erb",
      "test/output/text.html.erb",
-     "test/test_extractor_base.rb",
      "test/test_erb_helper_extractor.rb",
+     "test/test_extractor_base.rb",
      "test/test_html_attr_extractor.rb",
      "test/test_html_text_extractor.rb",
      "test/test_locale_dictionary.rb"
@@ -55,8 +55,8 @@ Gem::Specification.new do |s|
   s.summary = %q{ready_for_i18n is a tool helping for the very first step of transfering your local Rails project to an i18n one.}
   s.test_files = [
     "test/helper.rb",
-     "test/test_extractor_base.rb",
      "test/test_erb_helper_extractor.rb",
+     "test/test_extractor_base.rb",
      "test/test_html_attr_extractor.rb",
      "test/test_html_text_extractor.rb",
      "test/test_locale_dictionary.rb"
