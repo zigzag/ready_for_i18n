@@ -2,7 +2,6 @@ require 'stringio'
 
 module ReadyForI18N
   module ExtractorBase
-    VALUE_PATTERN = /\w+/
     def self.use_dot(on_off)
       @use_dot = on_off
     end
@@ -29,7 +28,7 @@ module ReadyForI18N
       key_prefix ? "#{key_prefix}_#{result}" : result
     end
     def can_replace?(e)
-      e.scan(VALUE_PATTERN).length > 0
+      e.strip.size > 1
     end
     def t_method(val,wrap=false)
       m = ExtractorBase.use_dot? ? "t('.#{to_key(val)}')" : "t(:#{to_key(val)})"

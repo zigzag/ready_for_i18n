@@ -36,6 +36,7 @@ Using the following options:
 
 |&nbsp;&nbsp;|@--locale [LOCALE]@|@Generating for the specified locale (default locale 'en')@|
 |&nbsp;&nbsp;|@--ext [EXTENSION]@|@The file extension name of your views(default '.html.erb')@|
+|&nbsp;&nbsp;|@--dot @|@Generate a structured dictionary file and support `Lazy` Lookup of Rails > 2.3@|
 
 h2. Warning
 
