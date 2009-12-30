@@ -41,7 +41,6 @@ Using the following options:
 h2. Warning
 
 * This tool is used based on the most "conventional" way of HTML and ERB. But I can not guarantee all the text will be extracted correctly. Create an issue in this github project page if you found some thing miss.
-* Only tested when the local language is English. Other languages support is in the TODO list.
 
 h2. Note on Patches/Pull Requests
  
