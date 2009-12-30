@@ -30,6 +30,11 @@ module ReadyForI18N
       end
       @ext = opt['extension'] || '.html.erb'
       ExtractorBase.use_dot(true) if opt['dot']
+      if opt['keymap']
+        files_content = opt['keymap'].split(':').map{|f| File.read(f)}
+        ReadyForI18N::ExtractorBase.key_mapper = KeyMapper.new(*files_content)
+      end
+      
     end
 
     def self.write_target_file(source_file_name,content)

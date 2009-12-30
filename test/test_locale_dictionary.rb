@@ -10,6 +10,8 @@ class TestLocaleDictionary < Test::Unit::TestCase
     dict.push 'label','OK'
     dict.push 'text','Please Confirm:'
     dict.push 'with_quote','It is my "Label"'
+    dict.push '中文','没问题'
+
     File.open(locale_file,'w+') {|f| dict.write_to f}
     
     result = YAML.load_file locale_file
@@ -22,7 +24,8 @@ class TestLocaleDictionary < Test::Unit::TestCase
     dict.push 'label','OK'
     out = StringIO.new
     dict.write_to out
-    assert_equal("en:\n  label: \"OK\"\n", out.string)
+    hash = YAML.load out.string
+    assert_equal("OK", hash['en']['label'])
   end
   
   should "should intent output when path is given" do 
@@ -30,7 +33,17 @@ class TestLocaleDictionary < Test::Unit::TestCase
     dict.push 'label','OK',['my_view']
     out = StringIO.new
     dict.write_to out
-    assert_equal("en:\n  my_view:\n    label: \"OK\"\n", out.string)
+    hash = YAML.load out.string
+    assert_equal("OK",hash['en']['my_view']['label'])
+  end
+
+  should "handle Chinese character as well" do 
+    dict = ReadyForI18N::LocaleDictionary.new('zh_CN')
+    dict.push '中文','没问题'
+    out = StringIO.new
+    dict.write_to out
+    hash = YAML.load out.string
+    assert_equal("没问题",hash['zh_CN']['中文'])
   end
   
 end

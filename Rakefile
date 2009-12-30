@@ -15,6 +15,8 @@ END_OF_DESC
     gem.homepage = "http://github.com/zigzag/ready_for_i18n"
     gem.authors = ["zigzag"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_dependency("ya2yaml", [">= 0.26"])
+    
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

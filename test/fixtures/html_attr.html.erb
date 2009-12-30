@@ -5,3 +5,6 @@
 <input type="button" name="button_copy" id="copy_<%= u profile.key %>" value="copy" onClick='var name=prompt("Name for the new profile"); if (name!=null) {$("copy_<%= profile.id %>").value=name; submit();} else {return false;}'>
 <input type="hidden" value="Should not extract">
 <input type="text" value="<%= should ignore me %>">
+
+<input id="sub_But" type="button" value="save2" class="submit">
+

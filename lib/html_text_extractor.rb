@@ -1,7 +1,7 @@
 module ReadyForI18N
   class HtmlTextExtractor
     SKIP_TAGS = [[/<script/i,/<\/script>/i],[/<%/,/%>/],[/<style/i,/\/style>/i]]
-    SKIP_INLINE_TAG = [/<%(.*?)%>/,/<(.*?)>/,/<(.*)$/,/^(.*)>/,/&nbsp;/]
+    SKIP_INLINE_TAG = [/<script>(.*?)<\/script>/i,/<%(.*?)%>/,/<(.*?)>/,/<(.*)$/,/^(.*)>/,/&nbsp;/]
     SEPERATOR = '_@@@_'
 
     include ReadyForI18N::ExtractorBase
@@ -12,10 +12,10 @@ module ReadyForI18N
     end
     def skip_line?(s)
       @stack ||= []
-      return true if s.nil? || s.strip.size == 0 
+      return false if s.nil? || s.strip.size == 0 
       jump_in_tag = SKIP_TAGS.find{ |start_tag,end_tag| s =~ start_tag}
       @stack.push jump_in_tag[1] if jump_in_tag
-      if @stack.last
+      unless @stack.empty?
         end_tag_match = s.match(@stack.last) 
         if end_tag_match
           @stack.pop 

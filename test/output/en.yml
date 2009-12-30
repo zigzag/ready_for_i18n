@@ -1,5 +1,7 @@
-en:
-  label: "OK"
+--- 
+en: 
+  label: OK
   login_key: "Login:"
   text: "Please Confirm:"
   with_quote: "It is my \"Label\""
+  中文: 没问题

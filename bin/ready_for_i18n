@@ -25,6 +25,11 @@ HELP
 require 'optparse'
 require 'fileutils'
 require 'ready_for_i18n'
+
+def error_parameter
+  puts "Invalid options. Run `ready_for_i18n --help` for assistance."
+  exit(1)
+end
  
 options = {}
 opts = OptionParser.new do |opts|
@@ -41,10 +46,16 @@ opts = OptionParser.new do |opts|
     options['dot'] = true
   end
   
-  opts.on("--nokey","Output only the text found in your view files but not generate the keys. Normally used for the non-english project") do |nokey|
+  opts.on("--nokey",
+    "Output only the text found in your view files but not generate the keys. Normally used for the non-english project") do |nokey|
     options['nokey'] = true
   end
 
+  opts.on('--keymap <extracted_locale_text_file>:<english_key_file>',
+    "Using two files for the key mapping from locale text extracted(with --nokey) to english. Separated by the colon ':'") do |mapper|
+    error_parameter if mapper.split(':').size != 2
+    options['keymap'] = mapper
+  end
 end
  
 # Read command line options into `options` hash
@@ -58,8 +69,7 @@ case ARGV.size
     options['source']      = ARGV[0]
     options['destination'] = ARGV[1]
   else
-    puts "Invalid options. Run `ready_for_i18n --help` for assistance."
-    exit(1)
+    error_parameter
 end
  
 # Run the i18n generating

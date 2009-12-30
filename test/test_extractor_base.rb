@@ -36,5 +36,18 @@ class TestExtractorBase < Test::Unit::TestCase
     assert_equal("t('.label_login')", c.t_method('Login:'))
     assert_equal("<%=t('.label_login')%>", c.t_method('Login:',true))
   end
+  
+  should "using keymapper when set" do
+    mapper = Object.new
+    def mapper.key_for(text); 'keeey' ;end
+    ReadyForI18N::ExtractorBase.key_mapper = mapper
+    c = Object.new
+    def c.key_prefix; 'label' ;end
+    def c.to_value(s); s ;end
+    c.extend ReadyForI18N::ExtractorBase
+    assert_equal('label_keeey', c.to_key('Login:'))
+    assert_equal("t(:label_keeey)", c.t_method('Login:'))
+    ReadyForI18N::ExtractorBase.key_mapper = nil
+  end
 
 end
