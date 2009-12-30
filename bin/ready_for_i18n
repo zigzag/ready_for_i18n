@@ -40,6 +40,10 @@ opts = OptionParser.new do |opts|
   opts.on("--dot","Generate a structured dictionary file and support `Lazy` Lookup of Rails > 2.3 ") do |dot|
     options['dot'] = true
   end
+  
+  opts.on("--nokey","Output only the text found in your view files but not generate the keys. Normally used for the non-english project") do |nokey|
+    options['nokey'] = true
+  end
 
 end
  
