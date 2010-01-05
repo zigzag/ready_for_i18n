@@ -10,7 +10,7 @@ Currently three extractors are available:
 |Extractor|From|To|
 |HtmlTextExtractor|@<b>Hello</b>@|@<b><%=t(:text_hello)%></b>@|
 |HtmlAttrExtractor|@<input type="submit" value="Back"/>@|@<input type="submit" value="<%=t(:label_back)"/>@|
-|ErbHelperExtractor|@link_to('Login'...)@|@link_to (t(:login))@|
+|ErbHelperExtractor|@link_to('Login'...)@|@link_to(t(:login))@|
 
 
 Introduction Blog at: "Get your application ready for I18N":http://zigzag.github.com/2009/12/17/get-your-local-rails-application-ready-for-i18n.html
